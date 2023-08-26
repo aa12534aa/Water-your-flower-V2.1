@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Water your plants</title>
+        <link rel="stylesheet" href="aplikacja.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">
+                Water your plants
+            </div>
+            <div class="version-txt">
+                v 2.0
+            </div>
+        </div>
+
+        <div class="search">
+            <div class="search-txt">
+                Search for plant
+            </div>
+            <input class="search-input js-search-input" placeholder="Write">
+            <button class="search-button js-button-search">
+                Search
+            </button>
+        </div>
+
+        <div class="add-txt">
+            Add another flower: 
+        </div>
+        <div class="add-flower-container">
+            <div class="picture-flower-container">
+                Use a photo of your flower
+                <input type="file" class="js-photo-flower photo-flower">
+            </div>
+
+            <input type="text" class="js-name-flower name-flower" placeholder="Flower name">
+            <input type="text" class="js-days-flower days-flower" placeholder="Days">
+
+            <button class="add-flower-button js-add-flower-button">
+                Add flower
+            </button>
+
+            <div class="help-txt"> 
+                To add flower. Remember to fill all 3 gaps, and in 'Days,' use a number.
+            </div>
+        </div>
+
+        <div class="main-grid js-main-grid">
+        </div>
+
+        <script type="module" src="aplikacja.js"></script>
+        <script type="module" src="database.js"></script>
+    </body>
+</html>

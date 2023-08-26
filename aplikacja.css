@@ -1,0 +1,270 @@
+body {
+    font-family: arial;
+    padding-top: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(234, 234, 234);
+}
+
+.header {
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    background-color: rgb(17, 169, 17);
+}
+
+.version-txt {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    color: rgb(50, 50, 50);
+}
+
+.title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(234, 234, 234);
+}
+
+.search {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.search-txt {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.search-input {
+    padding: 5px;
+    width: 40%;
+    background-color: rgb(60, 60, 60);
+    border: solid 4px black;
+    color: rgb(234, 234, 234);
+    font-weight: bold;
+    border-right: none;
+}
+.search-input::placeholder {
+    color: rgb(234, 234, 234);
+    font-weight: bold;
+}
+
+.search-button {
+    margin-left: -5px;
+    padding: 5px;
+    border: solid 4px black;
+    cursor: pointer;
+    border-left: none;
+    font-weight: bold;
+}
+
+.add-txt {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+
+.add-flower-container {
+    margin-bottom: 30px;
+    border: solid 2px black;
+    padding: 10px;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+}
+
+.photo-flower {
+    width: 180px;
+}
+
+.name-flower {
+    margin-top: 10px;
+    width: 250px;
+    padding: 5px;
+    border: none;
+    background-color: rgb(60, 60, 60);
+    color: rgb(234, 234, 234);
+}
+.name-flower::placeholder {
+    color: rgb(234, 234, 234);
+}
+
+.days-flower {
+    width: 30px;
+    background-color: rgb(60, 60, 60);
+    padding: 5px;
+    border: none;
+    color: rgb(234, 234, 234);
+}
+.days-flower::placeholder {
+    color: rgb(234, 234, 234);
+}
+
+.add-flower-button {
+    position: absolute;
+    right: 40px;
+    padding: 8px 10px;
+    border: none;
+    background-color: rgb(17, 169, 17);
+    border-radius: 5px;
+    color: rgb(234, 234, 234);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.help-txt {
+    color: rgb(196, 5, 5);
+    margin-top: 10px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+    column-gap: 15px;
+}
+@media (min-width: 800px){
+    .main-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1001px){
+    .main-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1301px){
+    .main-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+.flower-container {
+    box-shadow: 0px 0px 6px black;
+    max-width: 350px;
+    min-width: 250px;
+    border: solid 4px rgb(60, 60, 60);
+    border-radius: 14px;
+}
+
+.flower-name {
+    position: relative;
+    text-align: center;
+    border-radius: 8px 8px 0px 0px;
+    background-color: rgb(17, 169, 17);
+    color: rgb(234, 234, 234);
+    font-size: 25px;
+    width: 100%;
+    border-bottom: solid 4px rgb(60, 60, 60);
+    height: 85px;
+}
+
+.flower-name-txt {
+    word-wrap: break-word;
+}
+
+.delete-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.delete-txt {
+    position: absolute;
+    right: -20px;
+    top: 23px;
+    font-size: 14px;
+    background-color: black;
+    padding: 5px;
+    opacity: 0;
+    border-radius: 5px;
+    transition: opacity 0.2s ease;
+}
+.delete-button:hover + .delete-txt {
+    opacity: 1;
+}
+
+.img-flower {
+    width: 100%;
+    max-height: 430px;
+}
+
+.flower-widgets {
+    margin-top: -4px;
+    height: 200px;
+    border-top: solid 4px rgb(60, 60, 60);
+    border-radius: 0px 0px 8px 8px;
+    background-color: rgb(17, 169, 17);
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+}
+.waterless {
+    background-color: rgb(204, 2, 2);
+}
+
+.water-text {
+    margin: 5px;
+    margin-bottom: 0;
+    color: rgb(234, 234, 234);
+    height: 40px;
+}
+
+.water-button {
+    margin-top: 10px;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(55, 171, 230);
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(234, 234, 234);
+    font-size: 19px;
+    width: 60%;
+    min-width: 168px;
+    box-shadow: 0px 0px 10px rgb(22, 121, 136);
+}
+
+.update-txt {
+    color: rgb(234, 234, 234);
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.input-update {
+    background-color: black;
+    border: none;
+    padding: 5px 0px;
+    color: rgb(234, 234, 234);
+    padding-left: 5px;
+    border-radius: 8px 0px 0px 8px;
+    width: 70%;
+}
+.input-update::placeholder {
+    color: rgb(234, 234, 234);
+}
+
+.button-update {
+    background-color: rgb(234, 234, 234);
+    border: none;
+    margin-left: -5px;
+    padding: 5px 3px;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0px 8px 8px 0px;
+}
