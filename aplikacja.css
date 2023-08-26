@@ -110,6 +110,7 @@ body {
 .add-flower-button {
     position: absolute;
     right: 40px;
+    top: 195px;
     padding: 8px 10px;
     border: none;
     background-color: rgb(17, 169, 17);
