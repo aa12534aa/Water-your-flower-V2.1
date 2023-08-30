@@ -1,6 +1,5 @@
 // pobieranie danych
-import { flowers } from "./database.js";
-let seeingFlowers = [];
+import { flowers, updateDatabase, seeingFlowers } from "./database.js";
 //
 
 export function startSite() {
@@ -18,8 +17,9 @@ window.onload = function () {
 // wyswitlanie HTML na stronie
 let HTML = '';
 flowers.forEach((flower) => {
-    HTML += htmlReturn(flower);
-    seeingFlowers.push(flower.id);
+    if (seeingFlowers.includes(flower.id)) {
+        HTML += htmlReturn(flower);
+    }
 });
 document.querySelector('.js-main-grid')
     .innerHTML = HTML;
@@ -30,7 +30,6 @@ water();
 
 setInterval(() => {
     water();
-    localStorage.setItem('flowers', JSON.stringify(flowers));
 }, 1000);
 //
 
@@ -50,7 +49,7 @@ setInterval(() => {
                 removeBackgroundColorup.classList.remove('waterless');
 
                 flowers.forEach(element => {
-                    if (element.id === flowerId) {
+                    if (element.id === Number(flowerId)) {
                         element.waterDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 
                         element.waterTxt = 'When the background color will turn red water your flower!';
@@ -58,8 +57,9 @@ setInterval(() => {
                             .innerHTML = 'When the background color will turn red water your flower!';
                     }
                 })
-                localStorage.setItem('flowers', JSON.stringify(flowers));
-                
+                updateDatabase().then(() => {
+                    water();
+                });
             });
         });
     //
@@ -73,11 +73,13 @@ setInterval(() => {
                 const newTiming = Number(inputElement.value);
 
                 flowers.forEach(element => {
-                    if (element.id === flowerId) {
+                    if (element.id === Number(flowerId)) {
                         element.time = newTiming;
                     }
                 })
-                localStorage.setItem('flowers', JSON.stringify(flowers));
+                updateDatabase().then(() => {
+                    water();
+                });
             });
         });
     //
@@ -87,34 +89,20 @@ setInterval(() => {
         .forEach((button) => {
             button.addEventListener('click', () => {
                 const { flowerId } = button.dataset;
-                let indexNum = Number(flowerId.substring(2));
-                flowers.splice(indexNum - 1, 1);
+
+                flowers.splice(flowerId - 1, 1);
+                seeingFlowers.splice(seeingFlowers.length - 1, 1);
 
                 let i = 1;
                 flowers.forEach((flower) => {
-                    flower.id = `id${i}`;
+                    flower.id = i;
                     i++;
                 });
-                startSite();
+                updateDatabase().then(() => {
+                    startSite();
+                });
             });
         });
-    //
-    
-    // guzik oraz funkcja wywolanie enterem do znalezienia danej rosliny
-    document.querySelector('.js-button-search')
-        .addEventListener('click', () => {
-            searchFlower();
-            document.querySelector(`.js-search-input`)
-                .value = '';
-        })
-    document.querySelector('.js-search-input')
-        .addEventListener('keydown', (Event) => {
-            if (Event.key === 'Enter') {
-                searchFlower();
-                document.querySelector(`.js-search-input`)
-                .value = '';
-            }
-        })
     //
 //
 
@@ -150,35 +138,9 @@ setInterval(() => {
     }
     //
 
-    // funkcja szukajaca danej rosliny
-    function searchFlower() {
-        var inputElement = document.querySelector(`.js-search-input`);
-        const flowerName = inputElement.value;
-
-        if (!flowerName) {
-            HTML = ''
-            seeingFlowers = [];
-            flowers.forEach((flower) => {
-                HTML += htmlReturn(flower);
-                seeingFlowers.push(flower.id);
-            })
-        }
-        flowers.forEach(flower => {
-            if (flower.name === flowerName) {
-                HTML = htmlReturn(flower);
-                seeingFlowers = [flower.id];
-            } 
-        })
-        document.querySelector('.js-main-grid')
-            .innerHTML = HTML;
-        
-        water();
-    }
-    //
-
     // funkcja tworzaca html na stronie
     function htmlReturn(flower) {
-        var html =
+        let html =
         `
         <div class="flower-container">
             <div class="flower-name js-flowers-name-${flower.id}">
@@ -216,7 +178,6 @@ setInterval(() => {
     }
     //
 //
-
 // wyswietlanie danych o kwiatach
 console.log(flowers);
 //
