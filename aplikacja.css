@@ -73,6 +73,7 @@ body {
 }
 
 .add-flower-container {
+    position: relative;
     margin-bottom: 30px;
     border: solid 2px black;
     padding: 10px;
@@ -109,8 +110,8 @@ body {
 
 .add-flower-button {
     position: absolute;
-    right: 40px;
-    top: 195px;
+    top: 5px;
+    right: 10px;
     padding: 8px 10px;
     border: none;
     background-color: rgb(17, 169, 17);
@@ -127,30 +128,35 @@ body {
 
 .main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 300px;
     row-gap: 40px;
     column-gap: 15px;
+    justify-content: space-around;
 }
-@media (min-width: 800px){
+@media (min-width: 600px){
     .main-grid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 300px 300px;
     }
 }
-@media (min-width: 1001px){
+@media (min-width: 901px){
     .main-grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 300px 300px 300px;
     }
 }
-@media (min-width: 1301px){
+@media (min-width: 1201px){
     .main-grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 300px 300px 300px 300px;
+    }
+}
+@media (min-width: 1501px){
+    .main-grid {
+        grid-template-columns: 300px 300px 300px 300px 300px;
     }
 }
 
 .flower-container {
     box-shadow: 0px 0px 6px black;
-    max-width: 350px;
-    min-width: 250px;
+    width: 300px;
     border: solid 4px rgb(60, 60, 60);
     border-radius: 14px;
 }
@@ -201,7 +207,7 @@ body {
 
 .img-flower {
     width: 100%;
-    max-height: 430px;
+    height: 370px;
 }
 
 .flower-widgets {
